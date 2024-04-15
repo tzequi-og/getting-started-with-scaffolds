@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
   end
 
   def new
+    @the_movie = Movie.new
     render template: "movies/new"
   end
 
@@ -41,7 +42,7 @@ class MoviesController < ApplicationController
       @the_movie.save
       redirect_to("/movies", { :notice => "Movie created successfully." })
     else
-      render template: "movies/with_errors"
+      render template: "movies/new"
     end
   end
 
