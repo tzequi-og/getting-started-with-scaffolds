@@ -17,6 +17,20 @@ class MoviesController < ApplicationController
     render({ :template => "movies/show" })
   end
 
+  def new
+    render template: "movies/new"
+  end
+
+  def edit
+    the_id = params.fetch("id")
+
+    matching_movies = Movie.where({ :id => the_id })
+
+    @the_movie = matching_movies[0]
+    
+    render template: "movies/edit"
+  end
+
   def create
     the_movie = Movie.new
     the_movie.title = params.fetch("query_title")
