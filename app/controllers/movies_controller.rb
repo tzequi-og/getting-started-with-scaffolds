@@ -58,7 +58,8 @@ class MoviesController < ApplicationController
       the_movie.save
       redirect_to("/movies/#{the_movie.id}", { :notice => "Movie updated successfully."} )
     else
-      redirect_to("/movies/#{the_movie.id}", { :alert => the_movie.errors.full_messages.to_sentence })
+      @the_movie = the_movie
+      render template: "movies/edit"
     end
   end
 
